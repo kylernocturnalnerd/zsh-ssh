@@ -43,7 +43,7 @@ _ssh_host_list() {
   local ssh_config host_list
 
   ssh_config=$(_parse_config_file $SSH_CONFIG_FILE)
-  ssh_config=$(echo $ssh_config | command grep -v -E "^\s*#[^_]")
+  ssh_config=$(grep -v -E "^\s*#[^_]" ~/.ssh/config)
 
   host_list=$(echo $ssh_config | command awk '
     function join(array, start, end, sep, result, i) {
